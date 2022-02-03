@@ -1,0 +1,58 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.example.FLUXCalculator"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+        resConfigs "en", "zh-rCN"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+
+    signingConfigs {
+        config {
+            storeFile file('D:/FLUX Calculator/FLUX Calculator.jks')
+            storePassword '11112222'
+            keyPassword '11112222'
+            keyAlias 'FLUX Calculator'
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.config
+        }
+        release {
+            signingConfig signingConfigs.config
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
+    implementation 'com.huawei.hms:hwid:6.3.0.301'
+    implementation 'com.huawei.agconnect:agconnect-core:1.5.2.300'
+    implementation 'com.huawei.hms:ads:3.4.51.300'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation "com.faendir.rhino:rhino-android:1.5.2"
+    implementation 'com.huawei.hms:ads-identifier:3.4.34.301'
+}
+apply plugin: 'com.huawei.agconnect'
